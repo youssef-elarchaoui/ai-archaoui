@@ -1,18 +1,19 @@
 import Groq from 'groq-sdk';
 
+// ==================== تهيئة Groq ====================
 const groq = new Groq({
   apiKey: process.env.REACT_APP_GROQ_API_KEY,
-  dangerouslyAllowBrowser: true 
+  dangerouslyAllowBrowser: true
 });
 
+// ==================== النماذج المتاحة ====================
 const MODELS = [
   "llama-3.3-70b-versatile",
-  "llama-3.1-8b-instant",    
-  "gemma2-9b-it"          
+  "llama-3.1-8b-instant",
+  "gemma2-9b-it"
 ];
 
-let currentModelIndex = 0;
-
+// ==================== الوظيفة الرئيسية ====================
 export async function sendMsgToGroq(messages) {
   if (!process.env.REACT_APP_GROQ_API_KEY) {
     return "❌ مفتاح Groq غير موجود. يرجى إضافته في ملف .env";
@@ -21,10 +22,10 @@ export async function sendMsgToGroq(messages) {
   async function tryWithModel(model) {
     try {
       const response = await groq.chat.completions.create({
-        messages: messages,    
-        model: model,          
-        temperature: 0.7,      
-        max_tokens: 500,       
+        messages: messages,
+        model: model,
+        temperature: 0.7,
+        max_tokens: 500,
       });
 
       return { success: true, data: response.choices[0]?.message?.content };
@@ -33,12 +34,12 @@ export async function sendMsgToGroq(messages) {
     }
   }
 
+  // نجرب النماذج واحداً تلو الآخر
   for (let i = 0; i < MODELS.length; i++) {
     const model = MODELS[i];
     const result = await tryWithModel(model);
     
     if (result.success) {
-      currentModelIndex = i; 
       return result.data;
     }
     
@@ -50,6 +51,7 @@ export async function sendMsgToGroq(messages) {
   return "❌ جميع النماذج غير متاحة حالياً. يرجى المحاولة لاحقاً";
 }
 
+// ==================== معالجة الأخطاء ====================
 function handleError(error) {
   console.error("Groq Error:", error);
   
