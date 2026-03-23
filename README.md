@@ -1,71 +1,157 @@
-# Getting Started with Create React App
+# 🤖 Ai Archaoui
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+AI Chatbot application built with React and Groq API. Experience fast, free AI conversations with conversation history and mobile-responsive design.
 
-## Available Scripts
+## ✨ Features
 
-In the project directory, you can run:
+- 💬 **Real-time AI Chat** - Powered by Groq API (Mixtral, Llama, Gemma models)
+- 📱 **Fully Responsive** - Works perfectly on mobile, tablet, and desktop
+- 💾 **Save Conversations** - Store and load chat history
+- 🔄 **Auto-scroll** - Automatically scrolls to new messages
+- 🎨 **ChatGPT-like UI** - Clean and modern interface
+- 📂 **Conversation History** - Save and manage multiple chats
+- ⚡ **Fast & Free** - Uses Groq's free tier (30 requests/minute)
 
-### `npm start`
+## 🛠️ Technologies Used
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- **React 18** - Frontend framework
+- **Groq API** - AI model (Mixtral-8x7b, Llama-3.3-70b)
+- **Axios** - HTTP requests
+- **CSS3** - Styling with responsive design
+- **LocalStorage** - Save chat history
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 🚀 Live Demo
 
-### `npm test`
+Check out the live application: [Ai Archaoui](https://ai-archaoui.netlify.app)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 📦 Installation
 
-### `npm run build`
+Clone the repository and install dependencies:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```bash
+# Clone the repository
+git clone https://github.com/youssef-elarchaoui/ai-archaoui.git
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+# Navigate to project directory
+cd ai-archaoui
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+# Install dependencies
+npm install
 
-### `npm run eject`
+# Create .env file with your API key
+echo "REACT_APP_GROQ_API_KEY=your_groq_api_key_here" > .env
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+# Start development server
+npm start
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+🔑 Environment Variables
+Create a .env file in the root directory:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+env
+REACT_APP_GROQ_API_KEY=your_groq_api_key_here
+Get your free API key from Groq Console
 
-## Learn More
+📁 Project Structure
+text
+ai-archaoui/
+├── public/
+│   ├── _redirects          # Netlify redirects
+│   └── index.html
+├── src/
+│   ├── assets/             # Images and icons
+│   ├── App.jsx             # Main component
+│   ├── App.css             # Styles
+│   ├── groq.js             # Groq API integration
+│   └── index.js            # Entry point
+├── .env                    # Environment variables
+├── package.json
+└── README.md
+🎯 Usage
+Start a conversation - Type your message in the input field
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Save chats - Click "Save Chat" to store current conversation
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Load saved chats - Click "Saved" to view and load previous conversations
 
-### Code Splitting
+New chat - Click "New Chat" to start fresh
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Mobile - Use the ☰ button to open/close the sidebar
 
-### Analyzing the Bundle Size
+🧠 Available AI Models
+The app automatically tries these models in order:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+llama-3.3-70b-versatile - Most powerful
 
-### Making a Progressive Web App
+llama-3.1-8b-instant - Fastest
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+gemma2-9b-it - Google's model, good for Arabic
 
-### Advanced Configuration
+📱 Responsive Design
+Device	Breakpoint	Features
+Desktop	>1024px	Full sidebar, large text
+Tablet	768px-1024px	Adjusted spacing
+Mobile	<768px	Collapsible sidebar, optimized fonts
+🚢 Deployment
+This project is configured for easy deployment on Netlify:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+Push code to GitHub
 
-### Deployment
+Connect repository to Netlify
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+Set environment variable REACT_APP_GROQ_API_KEY
 
-### `npm run build` fails to minify
+Deploy automatically on push
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-# ai-archaoui
+🔧 Troubleshooting
+Build fails with ESLint errors
+bash
+# Add to package.json
+"eslintConfig": {
+  "extends": ["react-app"],
+  "rules": {
+    "no-unused-vars": "warn"
+  }
+}
+API key not working
+Verify the key starts with gsk_
+
+Check Netlify environment variables
+
+Ensure you have credits on Groq account
+
+Chat not responding
+Check console for errors (F12)
+
+Verify internet connection
+
+Wait 30 seconds if rate limited (30 requests/minute)
+
+🤝 Contributing
+Contributions are welcome! Feel free to:
+
+Report bugs
+
+Suggest features
+
+Submit pull requests
+
+📄 License
+This project is open source and available under the MIT License.
+
+🙏 Acknowledgments
+Groq for free AI API
+
+React for the framework
+
+OpenAI for inspiration
+
+📧 Contact
+GitHub: youssef el archaoui
+
+Project Link: https://github.com/youssef-elarchaoui/ai-archaoui
+
+Made with ❤️ by Youssef El Archaoui
+
+
+
